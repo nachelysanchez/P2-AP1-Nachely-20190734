@@ -4,6 +4,7 @@ using P2_AP1_Nachely_20190734.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -171,6 +172,26 @@ namespace P2_AP1_Nachely_20190734.BLL
                 contexto.Dispose();
             }
             return paso;
+        }
+
+        public static List<Proyectos> GetList(Expression<Func<Proyectos, bool>> criterio)
+        {
+            List<Proyectos> lista = new List<Proyectos>();
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                lista = contexto.Proyectos.Where(criterio).ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return lista;
         }
     }
 }
