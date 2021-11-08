@@ -130,7 +130,19 @@ namespace P2_AP1_Nachely_20190734.UI.Registros
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
+            Proyectos existe = ProyectosBLL.Buscar(proyecto.ProyectoId);
 
+            if (existe == null)
+            {
+                MessageBox.Show("No existe el proyecto en la base de datos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            else
+            {
+                ProyectosBLL.Eliminar(proyecto.ProyectoId);
+                MessageBox.Show("¡Eliminado!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+                Limpiar();
+            }
         }
     }
 }
