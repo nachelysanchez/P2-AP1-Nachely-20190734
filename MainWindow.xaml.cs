@@ -41,7 +41,8 @@ namespace P2_AP1_Nachely_20190734
 
         private void cProyectosMenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            cProyectos cproyecto = new cProyectos();
+            cproyecto.Show();
         }
     }
 }
