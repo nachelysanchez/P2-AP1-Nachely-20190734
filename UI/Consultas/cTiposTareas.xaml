@@ -21,8 +21,9 @@
                 </StackPanel>
                 <TextBox x:Name="CriterioTextBox" Height="20" Width="100"/>
                 <Button x:Name="BuscarButton" Height="30" Width="85" Margin="20" Click="BuscarButton_Click_1">
-                    <StackPanel>
+                    <StackPanel Orientation="Horizontal">
                         <Label Content="Buscar"/>
+                        <Image Source="/Resources/icons8-google-web-search-24.png" Width="30"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
