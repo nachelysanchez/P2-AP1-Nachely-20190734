@@ -10,10 +10,11 @@
         <StackPanel>
             <Menu Height="20">
                 <MenuItem Header="Registros">
-                    
+                    <MenuItem x:Name="rProyectosMenuItem" Header="Registro de Proyectos" Click="rProyectosMenuItem_Click"/>
                 </MenuItem>
                 <MenuItem Header="Consultas">
                     <MenuItem x:Name="cTiposTaresMenuItem" Header="Consulta de Tipos de Tareas" Click="cTiposTaresMenuItem_Click"/>
+                    <MenuItem x:Name="cProyectosMenuItem" Header="Consulta de Proyectos" Click="cProyectosMenuItem_Click"/>
                 </MenuItem>
             </Menu>
         </StackPanel>

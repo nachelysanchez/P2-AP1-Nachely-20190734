@@ -1,4 +1,5 @@
 ﻿using P2_AP1_Nachely_20190734.UI.Consultas;
+using P2_AP1_Nachely_20190734.UI.Registros;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,17 @@ namespace P2_AP1_Nachely_20190734
         {
             cTiposTareas tareas = new cTiposTareas();
             tareas.Show();
+        }
+
+        private void rProyectosMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rProyectos proyecto = new rProyectos();
+            proyecto.Show();
+        }
+
+        private void cProyectosMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
