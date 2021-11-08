@@ -23,5 +23,9 @@ namespace P2_AP1_Nachely_20190734.UI.Consultas
         {
             InitializeComponent();
         }
+        private void BuscarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
