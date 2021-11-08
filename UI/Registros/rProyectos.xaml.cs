@@ -1,4 +1,5 @@
 ﻿using P2_AP1_Nachely_20190734.BLL;
+using P2_AP1_Nachely_20190734.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,18 +21,52 @@ namespace P2_AP1_Nachely_20190734.UI.Registros
     /// </summary>
     public partial class rProyectos : Window
     {
+        private Proyectos proyecto = new Proyectos();
+        private ProyectosDetalle detalles = new ProyectosDetalle();
         public rProyectos()
         {
             InitializeComponent();
+            this.DataContext = proyecto;
 
             TipoTareaComboBox.ItemsSource = TiposTareasBLL.GetTiposTareas();
             TipoTareaComboBox.SelectedValuePath = "TipoTareaId";
             TipoTareaComboBox.DisplayMemberPath = "DescripcionTipoTarea";
+
+            TotalTextBox.Text = "0";
         }
+
+        private void Cargar()
+        {
+            this.DataContext = null;
+            this.DataContext = proyecto;
+        }
+        private void Limpiar()
+        {
+            this.proyecto = new Proyectos();
+            this.DataContext = proyecto;
+        }
+
+        private bool ExisteEnLaBD()
+        {
+            Proyectos esValido = ProyectosBLL.Buscar(proyecto.ProyectoId);
+            return (esValido != null);
+        }
+
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
+            Proyectos encontrado = ProyectosBLL.Buscar(proyecto.ProyectoId);
 
+            if (encontrado != null)
+            {
+                proyecto = encontrado;
+                Cargar();
+            }
+            else
+            {
+                Limpiar();
+                MessageBox.Show("El proyecto no existe en la base de datos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
