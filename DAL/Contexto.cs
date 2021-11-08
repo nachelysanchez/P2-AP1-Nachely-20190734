@@ -11,6 +11,7 @@ namespace P2_AP1_Nachely_20190734.DAL
     public class Contexto : DbContext
     {
         public  DbSet<TiposTareas> TiposTareas { get; set; }
+        public DbSet<Proyectos> Proyectos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
