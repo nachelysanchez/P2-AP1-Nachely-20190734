@@ -60,10 +60,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="DATA\ProyectosControl.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
