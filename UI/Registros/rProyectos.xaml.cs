@@ -71,22 +71,61 @@ namespace P2_AP1_Nachely_20190734.UI.Registros
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
+            proyecto.Detalle.Add(new ProyectosDetalle(Utilidades.ToInt(ProyectoIdTextBox.Text), (int)TipoTareaComboBox.SelectedValue,
+                RequerimientoTextBox.Text, Utilidades.ToInt(TiempoTextBox.Text), (TiposTareas)TipoTareaComboBox.SelectedItem, proyecto));
 
+            TotalTextBox.Text = proyecto.Total.ToString();
+
+            Cargar();
+            
+            TotalTextBox.Focus();
+            TotalTextBox.Clear();
         }
 
         private void RemoverFilaButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (DetalleDataGrid.Items.Count >= 1 && DetalleDataGrid.SelectedIndex <= DetalleDataGrid.Items.Count - 1)
+            {
+                proyecto.Detalle.RemoveAt(DetalleDataGrid.SelectedIndex);
+                proyecto.Total -= Utilidades.ToInt(TotalTextBox.Text);
+                Cargar();
+            }
         }
 
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Limpiar();
         }
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
+            bool paso = false;
 
+            if (proyecto.ProyectoId == 0)
+            {
+                paso = ProyectosBLL.Guardar(proyecto);
+            }
+            else
+            {
+                if (ExisteEnLaBD())
+                {
+                    paso = ProyectosBLL.Guardar(proyecto);
+                }
+                else
+                {
+                    MessageBox.Show("No existe en la base de datos", "Error");
+                }
+            }
+
+            if (paso)
+            {
+                Limpiar();
+                MessageBox.Show("¡Guardado!", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("¡Fallo al guardar!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
