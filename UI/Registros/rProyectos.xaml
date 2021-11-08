@@ -12,7 +12,7 @@
             <StackPanel Margin="10">
                 <Label Content="Proyecto Id: " Margin="5,0,0,0"/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name="ProyectoIdTextBox" Width="130" HorizontalAlignment="Left" Margin="10,0,0,0" Height="20"/>
+                    <TextBox x:Name="ProyectoIdTextBox" Text="{Binding ProyectoId}" Width="130" HorizontalAlignment="Left" Margin="10,0,0,0" Height="20"/>
                     <Button x:Name="BuscarButton" Margin="5,0" Click="BuscarButton_Click">
                         <StackPanel Orientation='Horizontal'>
                             <Image Source="/Resources/icons8-google-web-search-24.png" Width="20"/>
@@ -24,10 +24,10 @@
 
             <StackPanel>
                 <Label Content="Fecha" Margin="20,0,0,0"/>
-                <DatePicker Width="150" HorizontalAlignment="Left" Margin="20,0,0,0" />
+                <DatePicker Width="150" SelectedDate="{Binding Fecha}" HorizontalAlignment="Left" Margin="20,0,0,0" />
 
                 <Label Content="Descripcion del proyecto" Margin="20,10,0,0"/>
-                <TextBox x:Name="DescripcionTextBox" Height="50" Margin="20,0,20,0" />
+                <TextBox x:Name="DescripcionTextBox" Text="{Binding DescripcionProyecto}" Height="50" Margin="20,0,20,0" />
             </StackPanel>
 
             <StackPanel Margin="10,10,10,0">
@@ -37,17 +37,17 @@
                         <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
                             <StackPanel Margin="0,0,10,0">
                                 <Label Content="Tipo de Tarea"/>
-                                <ComboBox x:Name="TipoTareaComboBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                                <ComboBox x:Name="TipoTareaComboBox" Width="150" HorizontalAlignment="Left" SelectedValue="{Binding TiposTarea.TipoTareaId}" Margin="5,0,0,0"/>
                             </StackPanel>
 
                             <StackPanel Margin="0,0,10,0">
                                 <Label Content="Requerimiento de la tarea"/>
-                                <TextBox x:Name="RequerimientoTextBox" Width="200" Margin="5,0"/>
+                                <TextBox x:Name="RequerimientoTextBox" Width="200" Margin="5,0" Text="{Binding Detalle.Requerimiento}"/>
                             </StackPanel>
 
                             <StackPanel Margin="0,0,10,0">
                                 <Label Content="Tiempo (Minutos)" />
-                                <TextBox x:Name="TiempoTextBox" Width="130" Margin="5,0"/>
+                                <TextBox x:Name="TiempoTextBox" Width="130" Text="{Binding Detalle.Tiempo}" Margin="5,0"/>
                             </StackPanel>
 
                             <StackPanel Margin="10,12,0,0">
@@ -70,12 +70,12 @@
                         </StackPanel>
 
                         <StackPanel Margin="10">
-                            <DataGrid x:Name="DetalleDataGrid" Height="80" Width="400"  HorizontalAlignment="Center" AutoGenerateColumns="False" >
+                            <DataGrid x:Name="DetalleDataGrid" Height="80" Width="590" ItemsSource="{Binding Detalle}" HorizontalAlignment="Center" AutoGenerateColumns="False" >
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Tipo Id"/>
-                                    <DataGridTextColumn Header="Tipo Tarea"/>
-                                    <DataGridTextColumn Header="Requerimiento"/>
-                                    <DataGridTextColumn Header="Tiempo "/>
+                                    <DataGridTextColumn Header="Tipo Id" Width="140" Binding="{Binding TiposTarea.TipoTareaId}"/>
+                                    <DataGridTextColumn Header="Tipo Tarea" Width="140" Binding="{Binding TiposTarea.DescripcionTipoTarea}"/>
+                                    <DataGridTextColumn Header="Requerimiento" Width="140" Binding="{Binding Requerimiento}"/>
+                                    <DataGridTextColumn Header="Tiempo " Width="140" Binding="{Binding Tiempo}"/>
                                 </DataGrid.Columns>
 
                             </DataGrid>
@@ -90,7 +90,7 @@
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Label Content="Tiempo Total"/>
-                <TextBox x:Name="TotalTextBox" IsReadOnly="True" Width="120" Height="20"/>
+                <TextBox x:Name="TotalTextBox" Text="{Binding Total}" IsReadOnly="True" Width="120" Height="20"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
