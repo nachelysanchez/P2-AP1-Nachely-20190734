@@ -1,4 +1,5 @@
-﻿using System;
+﻿using P2_AP1_Nachely_20190734.UI.Consultas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace P2_AP1_Nachely_20190734
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void cTiposTaresMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            cTiposTareas tareas = new cTiposTareas();
+            tareas.Show();
         }
     }
 }
