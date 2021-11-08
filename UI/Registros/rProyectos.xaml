@@ -51,7 +51,7 @@
                             </StackPanel>
 
                             <StackPanel Margin="10,12,0,0">
-                                <Button x:Name="AgregarButton">
+                                <Button x:Name="AgregarButton" Click="AgregarButton_Click">
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="/Resources/Agregar.png" Width="20"/>
                                         <Label Content="Agregar Fila"/>
@@ -59,7 +59,7 @@
                                 </Button>
                             </StackPanel>
                             <StackPanel Margin="10,12,0,0">
-                                <Button x:Name="RemoverFilaButton">
+                                <Button x:Name="RemoverFilaButton" Click="RemoverFilaButton_Click">
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="/Resources/icons8-eliminar-16.png" Width="20"/>
                                         <Label Content="Remover Fila"/>
@@ -94,19 +94,19 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="NuevoButton" Margin="0,0">
+                <Button x:Name="NuevoButton" Margin="0,0" Click="NuevoButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icons8-nuevo-48.png" Width="35"/>
                         <Label Content="Nuevo" />
                     </StackPanel>
                 </Button>
-                <Button x:Name="GuardarButton" Margin="10,0">
+                <Button x:Name="GuardarButton" Margin="10,0" Click="GuardarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icons8-guardar-48.png" Width="35"/>
                         <Label Content="Guardar" />
                     </StackPanel>
                 </Button>
-                <Button x:Name="EliminarButton">
+                <Button x:Name="EliminarButton" Click="EliminarButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icons8-eliminar-16.png" Width="35"/>
                         <Label Content="Eliminar" />
