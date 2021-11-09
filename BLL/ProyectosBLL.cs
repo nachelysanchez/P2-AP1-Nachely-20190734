@@ -94,7 +94,7 @@ namespace P2_AP1_Nachely_20190734.BLL
 
                 contexto.Database.ExecuteSqlRaw($"Delete FROM ProyectosDetalle where Id={proyecto.ProyectoId}");
 
-                foreach(var item in proyectoAnterior.Detalle)
+                foreach(var item in proyecto.Detalle)
                 {
                     contexto.Entry(item).State = EntityState.Added;
                     contexto.Entry(item.TiposTarea).State = EntityState.Modified;
