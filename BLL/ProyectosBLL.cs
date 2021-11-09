@@ -94,13 +94,13 @@ namespace P2_AP1_Nachely_20190734.BLL
 
                 contexto.Database.ExecuteSqlRaw($"Delete FROM ProyectosDetalle where Id={proyecto.ProyectoId}");
 
-                foreach(var detalle in proyectoAnterior.Detalle)
+                foreach(var item in proyectoAnterior.Detalle)
                 {
-                    contexto.Entry(detalle).State = EntityState.Added;
-                    contexto.Entry(detalle.TiposTarea).State = EntityState.Modified;
-                    contexto.Entry(detalle.Proyecto).State = EntityState.Modified;
-                    detalle.TiposTarea.TiempoAcumulado += detalle.Tiempo;
-                    detalle.Proyecto.Total += detalle.Tiempo;
+                    contexto.Entry(item).State = EntityState.Added;
+                    contexto.Entry(item.TiposTarea).State = EntityState.Modified;
+                    contexto.Entry(item.Proyecto).State = EntityState.Modified;
+                    item.TiposTarea.TiempoAcumulado += item.Tiempo;
+                    item.Proyecto.Total += item.Tiempo;
                 }
 
                 contexto.Entry(proyecto).State = EntityState.Modified;

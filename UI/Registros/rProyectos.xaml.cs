@@ -71,8 +71,8 @@ namespace P2_AP1_Nachely_20190734.UI.Registros
 
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
-            proyecto.Detalle.Add(new ProyectosDetalle(Utilidades.ToInt(ProyectoIdTextBox.Text), (int)TipoTareaComboBox.SelectedValue,
-                RequerimientoTextBox.Text, Utilidades.ToInt(TiempoTextBox.Text), (TiposTareas)TipoTareaComboBox.SelectedItem, proyecto));
+            proyecto.Detalle.Add(new ProyectosDetalle(Convert.ToInt32(ProyectoIdTextBox.Text), (int)TipoTareaComboBox.SelectedValue,
+                RequerimientoTextBox.Text, int.Parse(TiempoTextBox.Text), (TiposTareas)TipoTareaComboBox.SelectedItem, proyecto));
 
             TotalTextBox.Text = proyecto.Total.ToString();
 
@@ -87,7 +87,7 @@ namespace P2_AP1_Nachely_20190734.UI.Registros
             if (DetalleDataGrid.Items.Count >= 1 && DetalleDataGrid.SelectedIndex <= DetalleDataGrid.Items.Count - 1)
             {
                 proyecto.Detalle.RemoveAt(DetalleDataGrid.SelectedIndex);
-                proyecto.Total -= Utilidades.ToInt(TotalTextBox.Text);
+                proyecto.Total -= int.Parse(TotalTextBox.Text);
                 Cargar();
             }
         }
