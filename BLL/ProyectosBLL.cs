@@ -54,7 +54,7 @@ namespace P2_AP1_Nachely_20190734.BLL
                 {
                     contexto.Entry(detalle).State = EntityState.Added;
                     contexto.Entry(detalle.TiposTarea).State = EntityState.Modified;
-                    contexto.Entry(detalle.Proyecto).State = EntityState.Modified;
+                    //contexto.Entry(detalle.Proyecto).State = EntityState.Modified;
                     detalle.TiposTarea.TiempoAcumulado += detalle.Tiempo;
                     detalle.Proyecto.Total += detalle.Tiempo;
                 }
@@ -92,13 +92,13 @@ namespace P2_AP1_Nachely_20190734.BLL
                     detalle.Proyecto.Total -= detalle.Tiempo;
                 }
 
-                contexto.Database.ExecuteSqlRaw($"Delete FROM ProyectosDetalle where Id={proyecto.ProyectoId}");
+                contexto.Database.ExecuteSqlRaw($"Delete FROM ProyectosDetalle where ProyectoId={proyecto.ProyectoId}");
 
                 foreach(var item in proyecto.Detalle)
                 {
                     contexto.Entry(item).State = EntityState.Added;
                     contexto.Entry(item.TiposTarea).State = EntityState.Modified;
-                    contexto.Entry(item.Proyecto).State = EntityState.Modified;
+                    //contexto.Entry(item.Proyecto).State = EntityState.Modified;
                     item.TiposTarea.TiempoAcumulado += item.Tiempo;
                     item.Proyecto.Total += item.Tiempo;
                 }

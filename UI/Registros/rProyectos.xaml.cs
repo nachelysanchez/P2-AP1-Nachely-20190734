@@ -52,7 +52,21 @@ namespace P2_AP1_Nachely_20190734.UI.Registros
             return (esValido != null);
         }
 
+        private bool Validar()
+        {
+            bool esValido = true;
 
+            if (DescripcionTextBox.Text.Length == 0)
+            {
+                esValido = false;
+                MessageBox.Show("Ingrese la descripcion", "Fallo",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                DescripcionTextBox.Focus();
+                DescripcionTextBox.Clear();
+            }
+
+            return esValido;
+        }
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
             Proyectos encontrado = ProyectosBLL.Buscar(proyecto.ProyectoId);
@@ -78,7 +92,6 @@ namespace P2_AP1_Nachely_20190734.UI.Registros
 
             Cargar();
             
-            TotalTextBox.Focus();
             TotalTextBox.Clear();
         }
 
@@ -100,6 +113,9 @@ namespace P2_AP1_Nachely_20190734.UI.Registros
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
+
+            if (!Validar())
+                return;
 
             if (proyecto.ProyectoId == 0)
             {
